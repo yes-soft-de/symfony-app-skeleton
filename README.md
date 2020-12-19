@@ -1,4 +1,4 @@
-# c4d App Backend  🚧
+# Symfony App Skeleton 🚧
 *. env file and private-public keys not enclosed .*
 ## Project setup
 
