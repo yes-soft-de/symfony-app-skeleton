@@ -2,8 +2,8 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: c4d-mysql
-  namespace: c4d
+  name: mysql
+  namespace: FORREPLACE1235
 spec:
   selector:
     matchLabels:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - image: mysql:8.0
-        name: c4d-mysql
+        name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: .sweetpwd.
@@ -37,13 +37,13 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: c4d-mysql-pv-claim
+          claimName: mysql-pv-claim
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: c4d-mysql-pv-claim
-  namespace: c4d
+  name: mysql-pv-claim
+  namespace: FORREPLACE1235
   labels:
     app: mysql8
 spec:
@@ -56,8 +56,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: c4d-mysql8-service
-  namespace: c4d
+  name: mysql8-service
+  namespace: FORREPLACE1235
   labels:
     app: mysql8
 spec:
