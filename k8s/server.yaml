@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: php-apache
-        image: gcr.io/yescloud/turkey-app
+        image: gcr.io/PROJECT123/FORREPLACE1235
         ports:
         - containerPort: 80
         volumeMounts:
