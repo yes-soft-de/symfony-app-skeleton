@@ -1,7 +1,7 @@
 
 name: Build and Deploy to GKE
 
-on:
+#on:
   push:
     branches: [ dev ]
 env:
