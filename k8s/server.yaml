@@ -21,7 +21,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: FORREPLACE1235-mysql-secrets
+              name: FORREPLACE1235-secrets
               key: rootpassword
         image: gcr.io/PROJECT123/FORREPLACE1235
         ports:
