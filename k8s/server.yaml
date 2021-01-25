@@ -27,7 +27,7 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: pvc-sym-m
+        - name: FORREPLACE1235-pvc-sym-m
           mountPath: /var/www/upload/image
       volumes:
       - name: FORREPLACE1235-pvc-sym-m
