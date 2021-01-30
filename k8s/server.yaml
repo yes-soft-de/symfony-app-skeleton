@@ -22,7 +22,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: FORREPLACE1235-secret
-              key: rootpassword
+              key: userpassword
         image: gcr.io/PROJECT123/FORREPLACE1235
         ports:
         - containerPort: 80
