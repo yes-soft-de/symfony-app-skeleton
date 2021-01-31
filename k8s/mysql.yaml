@@ -20,7 +20,7 @@ spec:
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: .sweetpwd.
+          value: sweetpwd.
 
             
         - name: MYSQL_DATABASE
