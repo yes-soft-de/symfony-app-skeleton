@@ -41,8 +41,8 @@ spec:
         volumeMounts:
           - name: FORREPLACE1235-mysql-persistent-storage
             mountPath: /var/lib/mysql
-          #- name: configmap
-            #mountPath: /etc/mysql/conf.d
+          - name: configmap
+            mountPath: /etc/mysql/conf.d
       volumes:
       - name: FORREPLACE1235-mysql-persistent-storage
         persistentVolumeClaim:
