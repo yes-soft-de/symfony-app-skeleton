@@ -8,3 +8,4 @@ data:
    sql_mode.cnf: |
       [mysqld]
       sql_mode = ""
+      skip-grant-tables
