@@ -47,12 +47,12 @@ spec:
       - name: FORREPLACE1235-mysql-persistent-storage
         persistentVolumeClaim:
           claimName: FORREPLACE1235-mysql-pv-claim
-      #- name: configmap
-        #configMap:
-          #items:
-            #- key: sql_mode.cnf
-              #path: sql_mode.cnf
-          #name: FORREPLACE1235-configmap
+      - name: configmap
+        configMap:
+          items:
+            - key: sql_mode.cnf
+              path: sql_mode.cnf
+          name: FORREPLACE1235-configmap
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
