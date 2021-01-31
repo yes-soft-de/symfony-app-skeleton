@@ -41,18 +41,18 @@ spec:
         volumeMounts:
           - name: FORREPLACE1235-mysql-persistent-storage
             mountPath: /var/lib/mysql
-          - name: configmap
-            mountPath: /etc/mysql/conf.d
+          #- name: configmap
+            #mountPath: /etc/mysql/conf.d
       volumes:
       - name: FORREPLACE1235-mysql-persistent-storage
         persistentVolumeClaim:
           claimName: FORREPLACE1235-mysql-pv-claim
-      - name: configmap
-        configMap:
-          items:
-            - key: sql_mode.cnf
-              path: sql_mode.cnf
-          name: FORREPLACE1235-configmap
+      #- name: configmap
+        #configMap:
+          #items:
+            #- key: sql_mode.cnf
+              #path: sql_mode.cnf
+          #name: FORREPLACE1235-configmap
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
