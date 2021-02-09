@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\UserEntityRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @ORM\Entity(repositoryClass=UserEntityRepository::class)
  */
@@ -35,14 +35,11 @@ class UserEntity implements UserInterface
     private $password;
 
     /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="date", nullable=true)
      */
-    private $createDate;
+    private $createAt;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $email;
 
     public function __construct($userID)
     {
@@ -127,26 +124,14 @@ class UserEntity implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getCreateDate(): ?\DateTimeInterface
+    public function getCreateAt(): ?\DateTimeInterface
     {
-        return $this->createDate;
+        return $this->createAt;
     }
 
-    public function setCreateDate(?\DateTimeInterface $createDate): self
+    public function setCreateAt(?\DateTimeInterface $createAt): self
     {
-        $this->createDate = $createDate;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(?string $email): self
-    {
-        $this->email = $email;
+        $this->createAt = $createAt;
 
         return $this;
     }

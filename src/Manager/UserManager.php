@@ -35,37 +35,49 @@ class UserManager
 
     public function userRegister(UserRegisterRequest $request)
     {
-        $userRegister = $this->autoMapping->map(UserRegisterRequest::class, UserEntity::class, $request);
+        $userProfile = $this->getUserByUserID($request->getUserID());
+        if ($userProfile == null) {
+            $userRegister = $this->autoMapping->map(UserRegisterRequest::class, UserEntity::class, $request);
 
-        $user = new UserEntity($request->getUserID());
+            $user = new UserEntity($request->getUserID());
 
-        if ($request->getPassword())
-        {
-            $userRegister->setPassword($this->encoder->encodePassword($user, $request->getPassword()));
+            if ($request->getPassword())
+            {
+                $userRegister->setPassword($this->encoder->encodePassword($user, $request->getPassword()));
+            }
+
+            if ($request->getRoles() == null)
+            {
+                $request->setRoles(['user']);
+            }
+            $userRegister->setRoles($request->getRoles());
+
+            $this->entityManager->persist($userRegister);
+            $this->entityManager->flush();
+            $this->entityManager->clear();
+
+            return $userRegister;
         }
-
-        if ($request->getRoles() == null)
-        {
-            $request->setRoles(['user']);
+        else {
+            return true;
         }
-        $userRegister->setRoles($request->getRoles());
-
-        $this->entityManager->persist($userRegister);
-        $this->entityManager->flush();
-        $this->entityManager->clear();
-
-        return $userRegister;
     }
 
     public function userProfileCreate(UserProfileCreateRequest $request)
     {
-        $userProfile = $this->autoMapping->map(UserProfileCreateRequest::class, UserProfileEntity::class, $request);
+       $userProfile = $this->getProfileByUserID($request->getUserID());
+       if ($userProfile == null) {
+            $userProfile = $this->autoMapping->map(UserProfileCreateRequest::class, UserProfileEntity::class, $request);
 
-        $this->entityManager->persist($userProfile);
-        $this->entityManager->flush();
-        $this->entityManager->clear();
+            $this->entityManager->persist($userProfile);
+            $this->entityManager->flush();
+            $this->entityManager->clear();
 
-        return $userProfile;
+            return $userProfile;
+    }
+        else {
+            return true;
+       }
     }
 
     public function userProfileUpdate(UserProfileUpdateRequest $request)
@@ -87,5 +99,10 @@ class UserManager
     public function getProfileByUserID($userID)
     {
         return $this->userProfileEntityRepository->getProfileByUSerID($userID);
+    }
+
+    public function getUserByUserID($userID)
+    {
+        return $this->userRepository->getUserByUserID($userID);
     }
 }

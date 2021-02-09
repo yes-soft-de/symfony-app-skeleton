@@ -24,9 +24,14 @@ class AdminService
     public function adminCreate(AdminCreateRequest $request)
     {
         $adminCreate = $this->adminManager->adminCreate($request);
-
-        $response = $this->autoMapping->map(UserEntity::class,AdminCreateResponse::class, $adminCreate);
-
-        return $response;
+        if ($adminCreate instanceof UserEntity) {
+            return $this->autoMapping->map(UserEntity::class,AdminCreateResponse::class, $adminCreate);
+        }
+        if ($adminCreate == true) {
+          
+            $user = $this->adminManager->getAdminByUserID($request->getUserID());
+            $user['found']="yes";
+            return $user;
+        }
     }
 }
