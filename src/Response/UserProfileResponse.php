@@ -12,9 +12,11 @@ class UserProfileResponse
 
     public $userName;
 
-    public $location;
+    public $city;
 
     public $story;
 
     public $image;
+
+    public $email;
 }

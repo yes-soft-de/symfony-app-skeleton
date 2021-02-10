@@ -30,7 +30,7 @@ class UserProfileEntity
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $location;
+    private $city;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -41,6 +41,13 @@ class UserProfileEntity
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
+
+    
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
+
 
     public function getId(): ?int
     {
@@ -71,14 +78,14 @@ class UserProfileEntity
         return $this;
     }
 
-    public function getLocation(): ?string
+    public function getCity(): ?string
     {
-        return $this->location;
+        return $this->city;
     }
 
-    public function setLocation(?string $location): self
+    public function setCity(?string $city): self
     {
-        $this->location = $location;
+        $this->city = $city;
 
         return $this;
     }
@@ -106,4 +113,5 @@ class UserProfileEntity
 
         return $this;
     }
+
 }

@@ -35,33 +35,15 @@ class UserEntityRepository extends ServiceEntityRepository implements PasswordUp
         $this->_em->persist($user);
         $this->_em->flush();
     }
-
-    // /**
-    //  * @return UserEntity[] Returns an array of UserEntity objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getUserByUserID($userID)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        return $this->createQueryBuilder('user')
 
-    /*
-    public function findOneBySomeField($value): ?UserEntity
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
+            ->select('user.id', 'user.userID')
+            ->andWhere('user.userID=:userID')
+            ->setParameter('userID', $userID)
+
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
-    */
 }

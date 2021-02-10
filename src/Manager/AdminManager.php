@@ -29,27 +29,37 @@ class AdminManager
 
     public function adminCreate(AdminCreateRequest $request)
     {
-        $adminCreate = $this->autoMapping->map(AdminCreateRequest::class, UserEntity::class, $request);
+        $userProfile = $this->getAdminByUserID($request->getUserID());
+        
+        if ($userProfile == null) {
+            $adminCreate = $this->autoMapping->map(AdminCreateRequest::class, UserEntity::class, $request);
 
-        $user = new UserEntity($request->getUserID());
+            $user = new UserEntity($request->getUserID());
 
-        if ($request->getPassword())
-        {
-            $adminCreate->setPassword($this->encoder->encodePassword($user, $request->getPassword()));
+            if ($request->getPassword())
+            {
+                $adminCreate->setPassword($this->encoder->encodePassword($user, $request->getPassword()));
+            }
+
+            if ($request->getRoles() == null)
+            {
+                $request->setRoles(['admin']);
+            }
+            $adminCreate->setRoles($request->getRoles());
+
+            $this->entityManager->persist($adminCreate);
+            $this->entityManager->flush();
+            $this->entityManager->clear();
+
+            return $adminCreate;
         }
-
-        $adminCreate->setCreateDate(new \DateTime('now'));
-
-        if ($request->getRoles() == null)
-        {
-            $request->setRoles(['user']);
+        else {
+            return true;
         }
-        $adminCreate->setRoles($request->getRoles());
+    }
 
-        $this->entityManager->persist($adminCreate);
-        $this->entityManager->flush();
-        $this->entityManager->clear();
-
-        return $adminCreate;
+    public function getAdminByUserID($userID)
+    {
+        return $this->userRepository->getUserByUserID($userID);
     }
 }

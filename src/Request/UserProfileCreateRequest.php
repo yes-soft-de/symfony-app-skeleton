@@ -10,11 +10,13 @@ class UserProfileCreateRequest
 
     private $userName;
 
-    private $location;
+    private $city;
 
     private $story;
 
     private $image;
+
+    private $email;
 
     /**
      * @return mixed
@@ -51,17 +53,17 @@ class UserProfileCreateRequest
     /**
      * @return mixed
      */
-    public function getLocation()
+    public function getCity()
     {
-        return $this->location;
+        return $this->city;
     }
 
     /**
-     * @param mixed $location
+     * @param mixed $city
      */
-    public function setLocation($location): void
+    public function setCity($city): void
     {
-        $this->location = $location;
+        $this->city = $city;
     }
 
     /**
@@ -96,5 +98,21 @@ class UserProfileCreateRequest
         $this->image = $image;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
+    /**
+     * @param mixed $email
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
 }

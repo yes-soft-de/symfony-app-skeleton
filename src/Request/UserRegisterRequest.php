@@ -59,6 +59,4 @@ class UserRegisterRequest
     {
         $this->password = $password;
     }
-
-
 }
