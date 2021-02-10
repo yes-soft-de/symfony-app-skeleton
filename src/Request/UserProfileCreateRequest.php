@@ -16,7 +16,6 @@ class UserProfileCreateRequest
 
     private $image;
 
-    private $email;
 
     /**
      * @return mixed
@@ -96,23 +95,5 @@ class UserProfileCreateRequest
     public function setImage($image): void
     {
         $this->image = $image;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */ 
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
     }
 }

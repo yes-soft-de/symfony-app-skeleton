@@ -17,6 +17,4 @@ class UserProfileResponse
     public $story;
 
     public $image;
-
-    public $email;
 }
