@@ -42,12 +42,6 @@ class UserProfileEntity
      */
     private $image;
 
-    
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $email;
-
 
     public function getId(): ?int
     {

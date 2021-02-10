@@ -39,7 +39,6 @@
 
 .env
 .env.test
-/.env
 upload/
 # Gradle:
 .idea/**/gradle.xml
