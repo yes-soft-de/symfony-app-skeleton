@@ -26,6 +26,9 @@
 .idea/**/tasks.xml
 .idea/dictionaries
 .idea/
+.env.prod
+migrations
+debug.log
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/

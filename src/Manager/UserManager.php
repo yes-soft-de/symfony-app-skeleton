@@ -105,4 +105,9 @@ class UserManager
     {
         return $this->userRepository->getUserByUserID($userID);
     }
+
+    public function getUserByEmail($email)
+    {
+        return $this->userRepository->getUserByEmail($email);
+    }
 }

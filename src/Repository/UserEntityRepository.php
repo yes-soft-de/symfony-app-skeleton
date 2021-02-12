@@ -35,6 +35,7 @@ class UserEntityRepository extends ServiceEntityRepository implements PasswordUp
         $this->_em->persist($user);
         $this->_em->flush();
     }
+    
     public function getUserByUserID($userID)
     {
         return $this->createQueryBuilder('user')
@@ -45,5 +46,15 @@ class UserEntityRepository extends ServiceEntityRepository implements PasswordUp
 
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function getUserByEmail($email)
+    {
+        return $this->createQueryBuilder('user')
+            ->andWhere('user.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
     }
 }
