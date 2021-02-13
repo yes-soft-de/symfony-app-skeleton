@@ -35,8 +35,12 @@ class UserManager
 
     public function userRegister(UserRegisterRequest $request)
     {
-        $userProfile = $this->getUserByUserID($request->getUserID());
-        if ($userProfile == null) {
+        // First, create the user
+
+        $userResult = $this->getUserByUserID($request->getUserID());
+
+        if ($userResult == null) 
+        {
             $userRegister = $this->autoMapping->map(UserRegisterRequest::class, UserEntity::class, $request);
 
             $user = new UserEntity($request->getUserID());
@@ -50,35 +54,64 @@ class UserManager
             {
                 $request->setRoles(['user']);
             }
+
             $userRegister->setRoles($request->getRoles());
 
             $this->entityManager->persist($userRegister);
             $this->entityManager->flush();
             $this->entityManager->clear();
 
+            // Second, create the user's profile
+
+            $userProfile = $this->getProfileByUserID($request->getUserID());
+
+            if ($userProfile == null) 
+            {
+                $userProfile = $this->autoMapping->map(UserRegisterRequest::class, UserProfileEntity::class, $request);
+
+                $this->entityManager->persist($userProfile);
+                $this->entityManager->flush();
+                $this->entityManager->clear();
+            }
+
             return $userRegister;
+
         }
-        else {
+        else
+        {
+            $userProfile = $this->getProfileByUserID($request->getUserID());
+
+            if ($userProfile == null) 
+            {
+                $userProfile = $this->autoMapping->map(UserRegisterRequest::class, UserProfileEntity::class, $request);
+
+                $this->entityManager->persist($userProfile);
+                $this->entityManager->flush();
+                $this->entityManager->clear();
+            }
+
             return true;
         }
+        
+
     }
 
-    public function userProfileCreate(UserProfileCreateRequest $request)
-    {
-       $userProfile = $this->getProfileByUserID($request->getUserID());
-       if ($userProfile == null) {
-            $userProfile = $this->autoMapping->map(UserProfileCreateRequest::class, UserProfileEntity::class, $request);
+    // public function userProfileCreate(UserProfileCreateRequest $request)
+    // {
+    //    $userProfile = $this->getProfileByUserID($request->getUserID());
+    //    if ($userProfile == null) {
+    //         $userProfile = $this->autoMapping->map(UserProfileCreateRequest::class, UserProfileEntity::class, $request);
 
-            $this->entityManager->persist($userProfile);
-            $this->entityManager->flush();
-            $this->entityManager->clear();
+    //         $this->entityManager->persist($userProfile);
+    //         $this->entityManager->flush();
+    //         $this->entityManager->clear();
 
-            return $userProfile;
-    }
-        else {
-            return true;
-       }
-    }
+    //         return $userProfile;
+    // }
+    //     else {
+    //         return true;
+    //    }
+    // }
 
     public function userProfileUpdate(UserProfileUpdateRequest $request)
     {

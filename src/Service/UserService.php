@@ -29,29 +29,37 @@ class UserService
     public function userRegister(UserRegisterRequest $request)
     {
         $userRegister = $this->userManager->userRegister($request);
-        if ($userRegister instanceof UserEntity) {
-            return $this->autoMapping->map(UserEntity::class,UserRegisterResponse::class, $userRegister);
+
+        if ($userRegister instanceof UserEntity) 
+        {
+            return $this->autoMapping->map(UserEntity::class, UserRegisterResponse::class, $userRegister);
         }
-        if ($userRegister == true) {
-          
+        elseif ($userRegister == true) 
+        {  
             $user = $this->userManager->getUserByUserID($request->getUserID());
+
             $user['found']="yes";
+
             return $user;
         }
+
+
     }
 
-    public function userProfileCreate(UserProfileCreateRequest $request)
-    {
-        $userProfile = $this->userManager->userProfileCreate($request);
-        if ($userProfile instanceof UserProfileEntity) {
+    // public function userProfileCreate(UserProfileCreateRequest $request)
+    // {
+    //     $userProfile = $this->userManager->userProfileCreate($request);
 
-            return $this->autoMapping->map(UserProfileEntity::class,UserProfileCreateResponse::class, $userProfile);
-        }
-        if ($userProfile == true) {
-            $user = $this->getUserProfileByUserID($request->getUserID());
-            return $user;
-        }
-    }
+    //     if ($userProfile instanceof UserProfileEntity) {
+
+    //         return $this->autoMapping->map(UserProfileEntity::class,UserProfileCreateResponse::class, $userProfile);
+    //     }
+    //     elseif ($userProfile == true) 
+    //     {
+    //         $user = $this->getUserProfileByUserID($request->getUserID());
+    //         return $user;
+    //     }
+    // }
 
     public function userProfileUpdate(UserProfileUpdateRequest $request)
     {

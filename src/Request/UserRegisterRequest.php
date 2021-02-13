@@ -14,6 +14,8 @@ class UserRegisterRequest
 
     private $email;
 
+    private $userName;
+
     /**
      * @return mixed
      */

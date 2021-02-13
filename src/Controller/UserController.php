@@ -52,30 +52,30 @@ class UserController extends BaseController
         return $this->response($response, self::CREATE);
     }
 
-    /**
-     * @Route("/userprofile", name="userProfileCreate", methods={"POST"})
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function userProfileCreate(Request $request)
-    {
-        $data = json_decode($request->getContent(), true);
+    // /**
+    //  * @Route("/userprofile", name="userProfileCreate", methods={"POST"})
+    //  * @param Request $request
+    //  * @return JsonResponse
+    //  */
+    // public function userProfileCreate(Request $request)
+    // {
+    //     $data = json_decode($request->getContent(), true);
 
-        $request = $this->autoMapping->map(stdClass::class,UserProfileCreateRequest::class,(object)$data);
+    //     $request = $this->autoMapping->map(stdClass::class,UserProfileCreateRequest::class,(object)$data);
 
-        $request->setUserID($this->getUserId());
+    //     $request->setUserID($this->getUserId());
 
-        $violations = $this->validator->validate($request);
-        if (\count($violations) > 0) {
-            $violationsString = (string) $violations;
+    //     $violations = $this->validator->validate($request);
+    //     if (\count($violations) > 0) {
+    //         $violationsString = (string) $violations;
 
-            return new JsonResponse($violationsString, Response::HTTP_OK);
-        }
+    //         return new JsonResponse($violationsString, Response::HTTP_OK);
+    //     }
 
-        $response = $this->userService->userProfileCreate($request);
+    //     $response = $this->userService->userProfileCreate($request);
 
-        return $this->response($response, self::CREATE);
-    }
+    //     return $this->response($response, self::CREATE);
+    // }
 
     /**
      * @Route("/userprofile", name="updateUserProfile", methods={"PUT"})
