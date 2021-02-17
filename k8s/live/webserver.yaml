@@ -27,6 +27,11 @@ spec:
       - name: skil-pvc-sym-m
         persistentVolumeClaim:
           claimName: skil-pvc-sym-uploud
+      tolerations:
+      - key: "env"
+        operator: "Equal"
+        value: "prod"
+        effect: "NoSchedule"
 ---
 apiVersion: v1
 kind: Service
@@ -42,6 +47,7 @@ spec:
     protocol: TCP
   selector:
     app: apache
+
 ---
 apiVersion: v1                  
 kind: PersistentVolumeClaim     
