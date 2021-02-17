@@ -37,6 +37,11 @@ spec:
       - name: skel-mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+      tolerations:
+      - key: "env"
+        operator: "Equal"
+        value: "dev"
+        effect: "NoSchedule"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
