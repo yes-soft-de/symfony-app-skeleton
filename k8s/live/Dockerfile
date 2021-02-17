@@ -10,7 +10,7 @@ RUN apt update -y && apt install zip -y && curl -sS https://getcomposer.org/inst
 
 
 RUN apt-get update && apt-get install -y build-essential libssl-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev
-COPY /k8s/live/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY . /var/www/html
 COPY --from=gcr.io/pc-api-6479467557629758909-343/skelsec ./.env /var/www/html
 COPY --from=gcr.io/pc-api-6479467557629758909-343/skelsec ./.htaccess /var/www/html/public
