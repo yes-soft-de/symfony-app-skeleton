@@ -30,7 +30,7 @@ spec:
       tolerations:
       - key: "env"
         operator: "Equal"
-        value: "prod"
+        value: "dev"
         effect: "NoSchedule"
 ---
 apiVersion: v1
