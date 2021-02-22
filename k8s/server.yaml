@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: FORREPLACE1235-webserver
-  namespace: FORREPLACE1235
+  name: skil-web-server
+  namespace: skil
   labels:
     app: apache
 spec:
@@ -17,30 +17,29 @@ spec:
     spec:
       containers:
       - name: php-apache
-        env:
-        - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: FORREPLACE1235-secret
-              key: userpassword
-        image: gcr.io/PROJECT123/FORREPLACE1235
+        image: gcr.io/pc-api-6479467557629758909-343/skil
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: FORREPLACE1235-pvc-sym-m
+        - name: skil-pvc-sym-m
           mountPath: /var/www/upload/image
       volumes:
-      - name: FORREPLACE1235-pvc-sym-m
+      - name: skil-pvc-sym-m
         persistentVolumeClaim:
-          claimName: FORREPLACE1235-pvc-sym-uploud
+          claimName: skil-pvc-sym-uploud
+      tolerations:
+      - key: "env"
+        operator: "Equal"
+        value: "dev"
+        effect: "NoSchedule"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: FORREPLACE1235-web-service
-  namespace: FORREPLACE1235
+  name: skil-web-service
+  namespace: skil
   labels:
-    run: FORREPLACE1235-web-service
+    run: skil-web-service
 spec:
   type: LoadBalancer
   ports:
@@ -48,12 +47,13 @@ spec:
     protocol: TCP
   selector:
     app: apache
+
 ---
 apiVersion: v1                  
 kind: PersistentVolumeClaim     
 metadata:                       
-   name: FORREPLACE1235-pvc-sym-uploud
-   namespace: FORREPLACE1235
+   name: skil-pvc-sym-uploud
+   namespace: skil
 spec:                           
    accessModes:                  
    - ReadWriteOnce              
