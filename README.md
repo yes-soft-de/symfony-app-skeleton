@@ -36,11 +36,6 @@ methods: POST
 /login_check
 methods: POST
 ```
-#### Create user profile
-```
-/userprofile
-methods: POST
-```
 #### Update user profile
 ```
 /userprofile
