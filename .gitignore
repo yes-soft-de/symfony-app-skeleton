@@ -40,7 +40,6 @@ debug.log
 .idea/**/uiDesigner.xml
 
 
-.env
 .env.test
 upload/
 # Gradle:
