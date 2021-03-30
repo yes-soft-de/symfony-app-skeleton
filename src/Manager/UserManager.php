@@ -143,4 +143,9 @@ class UserManager
     {
         return $this->userRepository->getUserByEmail($email);
     }
+
+    public function getAllProfiles()
+    {
+        return $this->userProfileEntityRepository->getAllProfiles();
+    }
 }

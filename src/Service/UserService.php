@@ -75,4 +75,16 @@ class UserService
         return $this->autoMapping->map('array', UserProfileResponse::class, $item);
 
     }
+
+    public function getAllProfiles()
+    {
+        $response = [];
+        $result = $this->userManager->getAllProfiles();
+
+        foreach ($result as $row)
+        {
+            $response[] = $this->autoMapping->map(UserProfileEntity::class, UserProfileResponse::class, $row);
+        }
+        return $response;
+    }
 }

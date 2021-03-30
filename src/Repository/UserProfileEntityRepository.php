@@ -41,4 +41,11 @@ class UserProfileEntityRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function getAllProfiles()
+    {
+        return $this->createQueryBuilder('profile')
+            ->getQuery()
+            ->getResult();
+    }
 }

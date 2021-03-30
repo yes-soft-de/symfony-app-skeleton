@@ -104,4 +104,16 @@ class UserController extends BaseController
 
         return $this->response($response,self::FETCH);
     }
+
+    /**
+     * @Route("/userprofileall", name="userProfileAll", methods={"GET"})
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function userProfileAll(Request $request)
+    {
+        $response = $this->userService->getAllProfiles();
+
+        return $this->response($response,self::FETCH);
+    }
 }
