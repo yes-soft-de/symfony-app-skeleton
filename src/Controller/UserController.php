@@ -107,10 +107,9 @@ class UserController extends BaseController
 
     /**
      * @Route("/userprofileall", name="userProfileAll", methods={"GET"})
-     * @param Request $request
      * @return JsonResponse
      */
-    public function userProfileAll(Request $request)
+    public function userProfileAll()
     {
         $response = $this->userService->getAllProfiles();
 
