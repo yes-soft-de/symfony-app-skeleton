@@ -6,6 +6,8 @@ namespace App\Request;
 
 class UserProfileUpdateRequest
 {
+    private $id;
+    
     private $userID;
 
     private $userName;
