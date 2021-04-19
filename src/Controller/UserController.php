@@ -7,6 +7,9 @@ use App\Request\UserProfileCreateRequest;
 use App\Request\UserProfileUpdateRequest;
 use App\Request\UserRegisterRequest;
 use App\Service\UserService;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Nelmio\ApiDocBundle\Annotation\Security;
+use OpenApi\Annotations as OA;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,9 +33,24 @@ class UserController extends BaseController
     }
 
     /**
-     * @Route("/user", name="userRegister", methods={"POST"})
-     * @param Request $request
-     * @return JsonResponse
+     * @Route("api/user", name="userRegister", methods={"POST"})
+     * 
+     * @OA\RequestBody(
+     *      description="Creates user and profile at the same time",
+     *      @OA\JsonContent(
+     *          @OA\Property(type="string", property="userID"),
+     *          @OA\Property(type="string", property="password"),
+     *          @OA\Property(type="string", property="userName"),
+     *          @OA\Property(type="string", property="email")
+     *      )
+     * )
+     * 
+     * @OA\Response(
+     *      response=200,
+     *      description="Returns the new user's role"
+     * )
+     * 
+     * @OA\Tag(name="UserProfile")
      */
     public function userRegister(Request $request)
     {
@@ -78,9 +96,33 @@ class UserController extends BaseController
     // }
 
     /**
-     * @Route("/userprofile", name="updateUserProfile", methods={"PUT"})
-     * @param Request $request
-     * @return JsonResponse
+     * @Route("api/userprofile", name="updateUserProfile", methods={"PUT"})
+     * 
+     * @OA\Tag(name="UserProfile")
+     * 
+     * @OA\Parameter(
+     *      name="token",
+     *      in="header",
+     *      description="token to be passed as a header",
+     *      required=true 
+     * )
+     * 
+     * @OA\RequestBody(
+     *      description="Updates the profile of the signed-in user",
+     *      @OA\JsonContent(
+     *          @OA\Property(type="string", property="userName"),
+     *          @OA\Property(type="string", property="city"),
+     *          @OA\Property(type="string", property="story"),
+     *          @OA\Property(type="string", property="image")
+     *      )
+     * )
+     * 
+     * @OA\Response(
+     *      response=200,
+     *      description="Returns the new profile info"
+     * )
+     * 
+     * @Security(name="Bearer")
      */
     public function updateUserProfile(Request $request)
     {
@@ -96,8 +138,23 @@ class UserController extends BaseController
     }
 
     /**
-     * @Route("/userprofile", name="getUserProfileByID",methods={"GET"})
-     * @return JsonResponse
+     * @Route("api/userprofile", name="getUserProfileByID",methods={"GET"})
+     * 
+     * @OA\Tag(name="UserProfile")
+     * 
+     * @OA\Parameter(
+     *      name="token",
+     *      in="header",
+     *      description="token to be passed as a header",
+     *      required=true 
+     * )
+     * 
+     * @OA\Response(
+     *      response=200,
+     *      description="Returns the profile of signed-in user"
+     * )
+     * 
+     * @Security(name="Bearer")
      */
     public function getUserProfileByID()
     {
@@ -107,8 +164,15 @@ class UserController extends BaseController
     }
 
     /**
-     * @Route("/userprofileall", name="userProfileAll", methods={"GET"})
-     * @return JsonResponse
+     * @Route("api/userprofileall", name="userProfileAll", methods={"GET"})
+     * 
+     * @OA\Response(
+     *      response=200,
+     *      description="Returns all users' profiles"
+     * )
+     * 
+     * @OA\Tag(name="UserProfile")
+     * 
      */
     public function userProfileAll()
     {
