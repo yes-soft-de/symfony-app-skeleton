@@ -159,6 +159,15 @@
     "namshi/jose": {
         "version": "7.2.3"
     },
+    "nelmio/api-doc-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "c8e0c38e1a280ab9e37587a8fa32b251d5bc1c94"
+        }
+    },
     "nelmio/cors-bundle": {
         "version": "1.5",
         "recipe": {
@@ -179,6 +188,15 @@
     },
     "php": {
         "version": "7.4"
+    },
+    "phpdocumentor/reflection-common": {
+        "version": "2.2.0"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "5.2.2"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "1.4.0"
     },
     "phpmd/phpmd": {
         "version": "2.9.1"
@@ -239,6 +257,9 @@
         "files": [
             "./config/packages/stof_doctrine_extensions.yaml"
         ]
+    },
+    "symfony/asset": {
+        "version": "v5.1.11"
     },
     "symfony/cache": {
         "version": "v5.1.11"
@@ -363,6 +384,9 @@
         }
     },
     "symfony/mime": {
+        "version": "v5.1.11"
+    },
+    "symfony/options-resolver": {
         "version": "v5.1.11"
     },
     "symfony/phpunit-bridge": {
@@ -528,5 +552,11 @@
     },
     "twig/twig": {
         "version": "v3.3.0"
+    },
+    "webmozart/assert": {
+        "version": "1.10.0"
+    },
+    "zircote/swagger-php": {
+        "version": "3.1.0"
     }
 }
