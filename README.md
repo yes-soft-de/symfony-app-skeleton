@@ -28,7 +28,7 @@ php bin/console doctrine:migration:migrate
 ### Account
 #### Create new user
 ```
-/user
+/api/user
 methods: POST
 ```
 #### login
@@ -38,11 +38,11 @@ methods: POST
 ```
 #### Update user profile
 ```
-/userprofile
+/api/userprofile
 methods: PUT
 ```
 #### Get user profile by userID
 ```
-/userprofile
+/api/userprofile
 methods: GET
 ```
