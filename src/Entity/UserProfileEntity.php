@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserProfileEntityRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +42,16 @@ class UserProfileEntity
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateAndTime;
 
 
     public function getId(): ?int
@@ -104,6 +115,30 @@ class UserProfileEntity
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    public function setDate($date): self
+    {
+        $this->date = new \DateTime($date);
+
+        return $this;
+    }
+
+    public function getDateAndTime()
+    {
+        return $this->dateAndTime;
+    }
+
+    public function setDateAndTime($dateAndTime): self
+    {
+        $this->dateAndTime = new \DateTime($dateAndTime);
 
         return $this;
     }

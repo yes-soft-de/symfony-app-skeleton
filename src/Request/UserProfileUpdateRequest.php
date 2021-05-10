@@ -18,6 +18,10 @@ class UserProfileUpdateRequest
 
     private $image;
 
+    private $date;
+
+    private $dateAndTime;
+
 
     /**
      * @return mixed
@@ -97,5 +101,15 @@ class UserProfileUpdateRequest
     public function setImage($image): void
     {
         $this->image = $image;
+    }
+
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    public function getDateAndTime()
+    {
+        return $this->dateAndTime;
     }
 }

@@ -6,10 +6,6 @@ namespace App\Response;
 
 class UserProfileResponse
 {
-//    public $id;
-//
-//    public $userID;
-
     public $userName;
 
     public $city;
@@ -17,4 +13,8 @@ class UserProfileResponse
     public $story;
 
     public $image;
+
+    public $date;
+
+    public $dateAndTime;
 }

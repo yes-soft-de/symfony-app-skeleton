@@ -122,6 +122,9 @@ class UserManager
             $item = $this->autoMapping->mapToObject(UserProfileUpdateRequest::class,
                 UserProfileEntity::class, $request, $item);
 
+            $item->setDate($request->getDate());
+            $item->setDateAndTime($request->getDateAndTime());
+
             $this->entityManager->flush();
             $this->entityManager->clear();
 
