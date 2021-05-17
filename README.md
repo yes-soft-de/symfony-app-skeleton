@@ -30,19 +30,59 @@ php bin/console doctrine:migration:migrate
 ```
 /api/user
 methods: POST
+
+Request:
+    - userID
+    - password
+    - email
+    - userName
 ```
 #### login
 ```
 /login_check
 methods: POST
+
+Request:
+    - username
+    - password
 ```
 #### Update user profile
 ```
 /api/userprofile
 methods: PUT
+
+Request:
+    - userName
+    - city
+    - story
+    - image
+    - date
+    - dateAndTime
 ```
 #### Get user profile by userID
 ```
 /api/userprofile
 methods: GET
+
+Response:
+    - userName
+    - city
+    - story
+    - image
+    - date
+    - dateAndTime
+```
+#### Get all profiles of all users
+```
+/api/userprofile
+methods: GET
+
+Response:
+ array of objects, each one contains the following:
+    - userName
+    - city
+    - story
+    - image
+    - date
+    - dateAndTime
 ```
