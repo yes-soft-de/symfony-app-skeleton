@@ -47,7 +47,16 @@ class UserController extends BaseController
      * 
      * @OA\Response(
      *      response=200,
-     *      description="Returns the new user's role"
+     *      description="Returns the new user's role",
+     *      @OA\JsonContent(
+     *          @OA\Property(type="string", property="status_code"),
+     *          @OA\Property(type="string", property="msg"),
+     *          @OA\Property(type="object", property="Data",
+     *                  @OA\Property(type="array", property="roles",
+     *                      @OA\Items(example="user")),
+     *                  @OA\Property(type="object", property="createdAt")
+     *          )
+     *      )
      * )
      * 
      * @OA\Tag(name="UserProfile")
@@ -119,7 +128,19 @@ class UserController extends BaseController
      * 
      * @OA\Response(
      *      response=200,
-     *      description="Returns the new profile info"
+     *      description="Returns the updated profile of the user",
+     *      @OA\JsonContent(
+     *          @OA\Property(type="string", property="status_code"),
+     *          @OA\Property(type="string", property="msg"),
+     *          @OA\Property(type="object", property="Data",
+     *                  @OA\Property(type="string", property="userName"),
+     *                  @OA\Property(type="string", property="city"),
+     *                  @OA\Property(type="string", property="story"),
+     *                  @OA\Property(type="string", property="image"),
+     *                  @OA\Property(type="object", property="date"),
+     *                  @OA\Property(type="object", property="dateAndTime")
+     *          )
+     *      )
      * )
      * 
      * @Security(name="Bearer")
@@ -151,7 +172,19 @@ class UserController extends BaseController
      * 
      * @OA\Response(
      *      response=200,
-     *      description="Returns the profile of signed-in user"
+     *      description="Returns the profile of the signed-in user",
+     *      @OA\JsonContent(
+     *          @OA\Property(type="string", property="status_code"),
+     *          @OA\Property(type="string", property="msg"),
+     *          @OA\Property(type="object", property="Data",
+     *                  @OA\Property(type="string", property="userName"),
+     *                  @OA\Property(type="string", property="city"),
+     *                  @OA\Property(type="string", property="story"),
+     *                  @OA\Property(type="string", property="image"),
+     *                  @OA\Property(type="object", property="date"),
+     *                  @OA\Property(type="object", property="dateAndTime")
+     *          )
+     *      )
      * )
      * 
      * @Security(name="Bearer")
@@ -168,7 +201,21 @@ class UserController extends BaseController
      * 
      * @OA\Response(
      *      response=200,
-     *      description="Returns all users' profiles"
+     *      description="Returns array of all profiles",
+     *      @OA\JsonContent(
+     *          @OA\Property(type="string", property="status_code"),
+     *          @OA\Property(type="string", property="msg"),
+     *          @OA\Property(type="array", property="Data",
+     *              @OA\Items(
+     *                  @OA\Property(type="string", property="userName"),
+     *                  @OA\Property(type="string", property="city"),
+     *                  @OA\Property(type="string", property="story"),
+     *                  @OA\Property(type="string", property="image"),
+     *                  @OA\Property(type="object", property="date"),
+     *                  @OA\Property(type="object", property="dateAndTime")
+     *              )
+     *          )
+     *      )
      * )
      * 
      * @OA\Tag(name="UserProfile")
