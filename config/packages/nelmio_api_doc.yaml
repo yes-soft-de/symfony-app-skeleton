@@ -19,4 +19,6 @@ nelmio_api_doc:
 
     areas:
         path_patterns: # an array of regexps
-            - ^/api(?!/doc$)
+            - ^/[a-z]
+        # host_patterns: 
+        #     - (\/_)

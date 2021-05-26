@@ -7,7 +7,6 @@ use App\Request\UserProfileCreateRequest;
 use App\Request\UserProfileUpdateRequest;
 use App\Request\UserRegisterRequest;
 use App\Service\UserService;
-use Nelmio\ApiDocBundle\Annotation\Model;
 use Nelmio\ApiDocBundle\Annotation\Security;
 use OpenApi\Annotations as OA;
 use stdClass;
@@ -33,7 +32,7 @@ class UserController extends BaseController
     }
 
     /**
-     * @Route("api/user", name="userRegister", methods={"POST"})
+     * @Route("/user", name="userRegister", methods={"POST"})
      * 
      * @OA\RequestBody(
      *      description="Creates user and profile at the same time",
@@ -59,7 +58,7 @@ class UserController extends BaseController
      *      )
      * )
      * 
-     * @OA\Tag(name="UserProfile")
+     * @OA\Tag(name="User")
      */
     public function userRegister(Request $request)
     {
@@ -105,9 +104,9 @@ class UserController extends BaseController
     // }
 
     /**
-     * @Route("api/userprofile", name="updateUserProfile", methods={"PUT"})
+     * @Route("userprofile", name="updateUserProfile", methods={"PUT"})
      * 
-     * @OA\Tag(name="UserProfile")
+     * @OA\Tag(name="User")
      * 
      * @OA\Parameter(
      *      name="token",
@@ -159,9 +158,9 @@ class UserController extends BaseController
     }
 
     /**
-     * @Route("api/userprofile", name="getUserProfileByID",methods={"GET"})
+     * @Route("userprofile", name="getUserProfileByID",methods={"GET"})
      * 
-     * @OA\Tag(name="UserProfile")
+     * @OA\Tag(name="User")
      * 
      * @OA\Parameter(
      *      name="token",
@@ -197,7 +196,7 @@ class UserController extends BaseController
     }
 
     /**
-     * @Route("api/userprofileall", name="userProfileAll", methods={"GET"})
+     * @Route("userprofileall", name="userProfileAll", methods={"GET"})
      * 
      * @OA\Response(
      *      response=200,
@@ -218,7 +217,7 @@ class UserController extends BaseController
      *      )
      * )
      * 
-     * @OA\Tag(name="UserProfile")
+     * @OA\Tag(name="User")
      * 
      */
     public function userProfileAll()
