@@ -23,6 +23,7 @@ jobs:
       runs-on: ubuntu-latest
       container: php-container
       steps:
+        - uses: actions/checkout@v2
         - run: |
             echo I am insaid php container
             echo It runs in the container instead of the VM.
