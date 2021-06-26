@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Deploy to cloud
 on:
   push:
     branches: [ d-cloud ]
