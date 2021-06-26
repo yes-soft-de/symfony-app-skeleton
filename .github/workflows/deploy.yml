@@ -19,8 +19,6 @@ jobs:
             cd ..
             cd var/www/backend-skeleton 
             git pull https://github.com/yes-soft-de/symfony-app-skeleton d-cloud
-  container:
-      runs-on: ubuntu-latest
       container:
         image: backend-skeleton_php74-service
       steps:
