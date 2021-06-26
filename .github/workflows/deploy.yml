@@ -21,7 +21,7 @@ jobs:
             git pull https://github.com/yes-soft-de/symfony-app-skeleton d-cloud
   container:
     runs-on: ubuntu-latest
-    container: backend-skeleton_php74-service
+    container: php-container
     steps:
       - run: |
           echo I am insaid php container
