@@ -19,7 +19,8 @@ jobs:
             cd ..
             cd var/www/backend-skeleton 
             git pull https://github.com/yes-soft-de/symfony-app-skeleton d-cloud
-            docker-compose run --rm php74-service php bin/console make:migration  php bin/console doctrine:migrations:migrate
+            docker-compose run --rm php74-service php bin/console make:migration
+            docker-compose run --rm php74-service php bin/console doctrine:migrations:migrate
   # container:
   #   runs-on: ubuntu-latest
   #   container:
