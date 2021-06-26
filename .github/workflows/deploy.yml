@@ -21,7 +21,8 @@ jobs:
             git pull https://github.com/yes-soft-de/symfony-app-skeleton d-cloud
   container:
       runs-on: ubuntu-latest
-      container: php-container
+      container:
+        image: backend-skeleton_php74-service
       steps:
         - uses: actions/checkout@v2
         - run: |
