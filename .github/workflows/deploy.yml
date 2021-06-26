@@ -15,7 +15,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
      
           script: |
-            mkdir test 
-            cd test 
+            cd ..
+            cd ..
+            cd var/www/backend-skeleton 
             git pull https://github.com/yes-soft-de/symfony-app-skeleton d-cloud
             echo 'Deployment successful to digital ocean' 
