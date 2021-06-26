@@ -19,7 +19,13 @@ jobs:
             cd ..
             cd var/www/backend-skeleton 
             git pull https://github.com/yes-soft-de/symfony-app-skeleton d-cloud
-            docker exec php-container bash
+  container:
+      runs-on: ubuntu-latest
+      container: php-container
+      steps:
+        - run: |
+            echo I am insaid php container
+            echo It runs in the container instead of the VM.
             php bin/console make:migration
             php bin/console doctrine:migrations:migrate
-            echo 'Deployment successful to digital ocean' 
+          name: Run in container
